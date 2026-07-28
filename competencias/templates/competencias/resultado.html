@@ -1,0 +1,48 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Resultado de la Evaluación</title>
+    <link rel="stylesheet" href="/static/css/resultado.css?">
+</head>
+<body>
+
+<div class="card">
+    <h2>3. Calificación y Retroalimentación General 🤖</h2>
+    <p class="saludo-instruccion">
+        Hola <strong>{{ persona.nombre }}</strong>, aquí tienes el análisis detallado emitido por la IA para cada una de las competencias evaluadas:
+    </p>
+
+    {% for res in resultados %}
+        <div class="bloque-resultado-individual" style="margin-bottom: 30px; border-bottom: 2px dashed #ccc; padding-bottom: 20px;">
+            <span class="etiqueta-competencia">Competencia: {{ res.competencia }}</span>
+
+            <div class="contenedor-respuesta-estudiante">
+                <h4>✍️ Tu respuesta enviada:</h4>
+                <p><em>"{{ res.respuesta }}"</em></p>
+            </div>
+
+            <div class="contenedor-ia">
+                <h4>📊 Evaluación de la IA:</h4>
+                <div class="resultado-texto">
+                    {{ res.evaluacion|linebreaks }}
+                </div>
+            </div>
+        </div>
+    {% endfor %}
+
+    <!-- Acciones finales -->
+    <div class="acciones-resultado">
+        <a href="{% url 'dashboard' persona.id %}" class="boton-dashboard">
+            📊 Ver Mi Grafico de Avance
+        </a>
+        <a href="{% url 'registrar_persona' %}" class="boton-inicio">
+            🔄 Realizar Otra Evaluación
+        </a>
+    </div>
+</div>
+
+</body>
+</html>

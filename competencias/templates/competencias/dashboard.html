@@ -1,0 +1,87 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mi Progreso - {{ persona.nombre }}</title>
+  
+    <link rel="stylesheet" href="{% static 'css/styles.css' %}">
+  
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body>
+
+    <div class="tarjeta-principal">
+        
+        <header class="encabezado-estudiante">
+            <span class="etiqueta-badge">🚀 Proyecto Final</span>
+            <h1>Resultados de Evaluación</h1>
+            <p class="nombre-usuario">Estudiante: <span>{{ persona.nombre }}</span></p>
+        </header>
+
+        <section class="bloque-grafica">
+            <h2>Comparativa: Antes vs Después</h2>
+            <div class="contenedor-canvas">
+                <canvas id="graficoAvance"></canvas>
+            </div>
+        </section>
+
+
+        <footer class="pie-pagina">
+            <a href="{% url 'registrar_persona' %}" class="boton-volver">
+                📝 Realizar un nuevo formulario
+            </a>
+        </footer>
+
+    </div>
+
+
+    {{ lista_nombres|json_script:"datos-etiquetas" }}
+    {{ datos_antes|json_script:"datos-antes" }}
+    {{ datos_despues|json_script:"datos-despues" }}
+
+    <script>
+        // Leemos el contenido de las etiquetas generadas por Django de forma estándar en JS
+        const etiquetas = JSON.parse(document.getElementById('datos-etiquetas').textContent);
+        const datosAntes = JSON.parse(document.getElementById('datos-antes').textContent);
+        const datosDespues = JSON.parse(document.getElementById('datos-despues').textContent);
+
+        const lienzo = document.getElementById('graficoAvance').getContext('2d');
+        
+        const miGrafica = new Chart(lienzo, {
+            type: 'bar',
+            data: {
+                labels: etiquetas,
+                datasets: [
+                    {
+                        label: 'Nivel Inicial (Antes)',
+                        data: datosAntes,
+                        backgroundColor: '#ff7675',
+                        borderRadius: 6
+                    },
+                    {
+                        label: 'Nivel Logrado (Después)',
+                        data: datosDespues,
+                        backgroundColor: '#00b894',
+                        borderRadius: 6
+                    }
+                ]
+            },
+            options: {
+                responsive: true,
+                scales: {
+                    y: {
+                        beginAtZero: true,
+                        max: 100,
+                        ticks: {
+                            stepSize: 20
+                        }
+                    }
+                }
+            }
+        });
+    </script>
+
+</body>
+</html>

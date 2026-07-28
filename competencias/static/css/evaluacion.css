@@ -1,0 +1,129 @@
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 40px 20px;
+    background-color: #f4f6f9;
+    color: #333;
+}
+
+/* Contenedor principal ajustado para múltiples preguntas */
+.contenedor-evaluacion {
+    background: #ffffff;
+    padding: 35px;
+    border-radius: 12px;
+    max-width: 750px;
+    margin: 0 auto;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+}
+
+.encabezado {
+    margin-bottom: 25px;
+    border-bottom: 2px solid #eef2f7;
+    padding-bottom: 15px;
+}
+
+.encabezado h2 {
+    margin: 0 0 8px 0;
+    color: #1e293b;
+    font-size: 1.5rem;
+}
+
+.encabezado p {
+    margin: 0;
+    color: #64748b;
+    font-size: 0.95rem;
+}
+
+/* Tarjeta individual por cada caso */
+.tarjeta-caso {
+    background-color: #f8fafc;
+    border: 1px solid #e2e8f0;
+    border-left: 5px solid #007bff;
+    padding: 20px;
+    border-radius: 8px;
+    margin-bottom: 25px;
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.tarjeta-caso:hover {
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.04);
+}
+
+/* Badge de la competencia elegida */
+.badge-competencia {
+    background-color: #e3f2fd;
+    color: #0d47a1;
+    padding: 6px 12px;
+    border-radius: 20px;
+    font-weight: bold;
+    font-size: 13px;
+    display: inline-block;
+    margin-bottom: 12px;
+}
+
+.tarjeta-caso h3 {
+    margin: 0 0 8px 0;
+    color: #007bff;
+    font-size: 1.1rem;
+}
+
+.texto-caso {
+    margin: 0 0 18px 0;
+    line-height: 1.6;
+    color: #334155;
+    font-size: 0.95rem;
+}
+
+/* Área de respuesta */
+.grupo-campo label {
+    display: block;
+    margin-bottom: 8px;
+    font-weight: bold;
+    color: #1e293b;
+    font-size: 0.9rem;
+}
+
+textarea {
+    width: 100%;
+    padding: 12px;
+    border: 1px solid #cbd5e1;
+    border-radius: 6px;
+    box-sizing: border-box;
+    font-family: inherit;
+    font-size: 14px;
+    resize: vertical;
+    background-color: #ffffff;
+    transition: border-color 0.2s ease, box-shadow 0.2s ease;
+}
+
+textarea:focus {
+    border-color: #007bff;
+    box-shadow: 0 0 0 3px rgba(0, 123, 255, 0.15);
+    outline: none;
+}
+
+/* Botón final */
+.contenedor-boton {
+    margin-top: 30px;
+}
+
+.boton-enviar {
+    background-color: #007bff;
+    color: #ffffff;
+    border: none;
+    padding: 14px 20px;
+    border-radius: 6px;
+    cursor: pointer;
+    font-size: 16px;
+    width: 100%;
+    font-weight: bold;
+    transition: background-color 0.2s ease, transform 0.1s ease;
+}
+
+.boton-enviar:hover {
+    background-color: #0056b3;
+}
+
+.boton-enviar:active {
+    transform: scale(0.99);
+}

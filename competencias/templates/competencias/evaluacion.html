@@ -1,0 +1,46 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Evaluación de Casos Prácticos</title>
+    <link rel="stylesheet" href="/static/css/evaluacion.css?">
+</head>
+<body>
+
+<div class="contenedor-evaluacion">
+    <header class="encabezado">
+        <h2>2. Casos Prácticos a Resolver 📝</h2>
+        <p>Hola <strong>{{ persona.nombre }}</strong>, responde los siguientes casos correspondientes a las competencias que elegiste:</p>
+    </header>
+
+    <form method="POST" action="{% url 'evaluar_caso' persona.id %}">
+        {% csrf_token %}
+
+        {% for item in items_evaluacion %}
+            <div class="tarjeta-caso">
+                <span class="badge-competencia">Competencia: {{ item.competencia.nombre }}</span>
+                <h3>Caso Práctico:</h3>
+                <p class="texto-caso">{{ item.caso_texto }}</p>
+
+                <div class="grupo-campo">
+                    <label for="respuesta_{{ item.competencia.id }}">Tu solución / respuesta:</label>
+                    <textarea 
+                        name="respuesta_{{ item.competencia.id }}" 
+                        id="respuesta_{{ item.competencia.id }}" 
+                        rows="4" 
+                        placeholder="Escribe aquí en detalle cómo resolverías este problema..." 
+                        required></textarea>
+                </div>
+            </div>
+        {% endfor %}
+
+        <div class="contenedor-boton">
+            <button type="submit" class="boton-enviar">Enviar Respuestas para Calificación 🚀</button>
+        </div>
+    </form>
+</div>
+
+</body>
+</html>

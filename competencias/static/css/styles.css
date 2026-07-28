@@ -1,0 +1,102 @@
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
+    background-color: #f0f2f5;
+    color: #2d3436;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    padding: 20px;
+}
+
+.tarjeta-principal {
+    background-color: #ffffff;
+    border-radius: 16px;
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.06);
+    width: 100%;
+    max-width: 780px;
+    padding: 30px;
+    border: 1px solid #e1e8ed;
+}
+
+
+.encabezado-estudiante {
+    text-align: center;
+    margin-bottom: 25px;
+}
+
+.etiqueta-badge {
+    background-color: #e3f2fd;
+    color: #0984e3;
+    font-size: 0.85rem;
+    font-weight: 600;
+    padding: 4px 12px;
+    border-radius: 20px;
+    display: inline-block;
+    margin-bottom: 10px;
+}
+
+.encabezado-estudiante h1 {
+    font-size: 1.6rem;
+    color: #2d3436;
+    margin-bottom: 6px;
+}
+
+.nombre-usuario {
+    font-size: 1rem;
+    color: #636e72;
+}
+
+.nombre-usuario span {
+    color: #2d3436;
+    font-weight: 600;
+}
+
+/* Bloque de la gráfica */
+.bloque-grafica {
+    background-color: #fafafa;
+    border-radius: 12px;
+    padding: 20px;
+    border: 1px dashed #dfe6e9;
+    margin-bottom: 25px;
+}
+
+.bloque-grafica h2 {
+    font-size: 1.1rem;
+    color: #636e72;
+    margin-bottom: 15px;
+    text-align: center;
+}
+
+.contenedor-canvas {
+    position: relative;
+    width: 100%;
+}
+
+
+.pie-pagina {
+    text-align: center;
+}
+
+.boton-volver {
+    display: inline-block;
+    background-color: #6c5ce7;
+    color: #ffffff;
+    text-decoration: none;
+    padding: 10px 22px;
+    border-radius: 8px;
+    font-size: 0.95rem;
+    font-weight: 500;
+    transition: all 0.2s ease;
+}
+
+.boton-volver:hover {
+    background-color: #5a4bcf;
+    transform: translateY(-1px);
+}

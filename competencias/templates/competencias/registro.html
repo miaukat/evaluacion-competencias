@@ -1,42 +1,74 @@
+{% load static %}
 <!DOCTYPE html>
 <html lang="es">
 <head>
     <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Registro de Competencias</title>
-    <style>
-        body { font-family: Arial, sans-serif; margin: 40px; background-color: #f4f6f9; }
-        .card { background: white; padding: 25px; border-radius: 8px; max-width: 500px; margin: 0 auto; box-shadow: 0 2px 5px rgba(0,0,0,0.1); }
-        .form-group { margin-bottom: 15px; }
-        label { display: block; margin-bottom: 5px; font-weight: bold; }
-        input, textarea { width: 100%; padding: 8px; border: 1px solid #ccc; border-radius: 4px; box-sizing: border-box; }
-        button { background-color: #28a745; color: white; border: none; padding: 10px 15px; border-radius: 4px; cursor: pointer; font-size: 16px; width: 100%; }
-        button:hover { background-color: #218838; }
-    </style>
+    <link rel="stylesheet" href="{% static 'css/registro.css' %}">
 </head>
 <body>
 
 <div class="card">
     <h2>1. Registrar Aprendiz y Competencias</h2>
-    <form method="POST">
+
+    {% if error %}
+        <div class="alert">{{ error }}</div>
+    {% endif %}
+
+    <form method="POST" id="Registro">
         {% csrf_token %}
-        <div class="form-group">
+        <div class="formulario">
             <label for="nombre">Nombre completo:</label>
             <input type="text" id="nombre" name="nombre" required placeholder="Ej: Katherine">
         </div>
 
-        <div class="form-group">
+        <div class="formulario">
             <label for="email">Correo electrónico:</label>
             <input type="email" id="email" name="email" required placeholder="ejemplo@correo.com">
         </div>
 
-        <div class="form-group">
-            <label for="competencias">Competencias (3 a 5 separadas por comas):</label>
-            <textarea id="competencias" name="competencias" rows="3" required placeholder="Ej: Trabajo en equipo, Lógica de programación, Comunicación asertiva"></textarea>
+        <div class="formulario">
+            <label>Selecciona las Competencias: <br><small>(Selecciona entre 3 y 5 opciones)</small></label>
+            
+            <div class="competencias-grupo">
+                <label class="competencia">
+                    <input type="checkbox" name="competencias" value="Lógica de programación y desarrollo">
+                    💻 Lógica de programación y desarrollo
+                </label>
+                <label class="competencia">
+                    <input type="checkbox" name="competencias" value="Trabajo en equipo y colaboración">
+                    👥 Trabajo en equipo y colaboración
+                </label>
+                <label class="competencia">
+                    <input type="checkbox" name="competencias" value="Comunicación asertiva">
+                    🗣️ Comunicación asertiva
+                </label>
+                <label class="competencia">
+                    <input type="checkbox" name="competencias" value="Resolución de problemas técnicos">
+                    🔍 Resolución de problemas técnicos
+                </label>
+                <label class="competencia">
+                    <input type="checkbox" name="competencias" value="Orientación al cliente y servicio">
+                    🎯 Orientación al cliente y servicio
+                </label>
+            </div>
         </div>
 
-        <button type="submit">Guardar Registro</button>
+        <button type="submit" class="guardar_registro">Guardar Registro</button>
     </form>
 </div>
+
+<script>
+    // Ajustado con tu ID 'Registro'
+    document.getElementById('Registro').addEventListener('submit', function(e) {
+        const seleccionados = document.querySelectorAll('input[name="competencias"]:checked').length;
+        if (seleccionados < 3 || seleccionados > 5) {
+            e.preventDefault();
+            alert('Por favor selecciona entre 3 y 5 competencias.');
+        }
+    });
+</script>
 
 </body>
 </html>
