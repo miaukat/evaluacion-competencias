@@ -20,12 +20,12 @@
             <span class="etiqueta-competencia">Competencia: {{ res.competencia }}</span>
 
             <div class="contenedor-respuesta-estudiante">
-                <h4>✍️ Tu respuesta enviada:</h4>
+                <h4> Tu respuesta enviada:</h4>
                 <p><em>"{{ res.respuesta }}"</em></p>
             </div>
 
             <div class="contenedor-ia">
-                <h4>📊 Evaluación de la IA:</h4>
+                <h4> Evaluación de la IA:</h4>
                 <div class="resultado-texto">
                     {{ res.evaluacion|linebreaks }}
                 </div>
@@ -33,13 +33,12 @@
         </div>
     {% endfor %}
 
-    <!-- Acciones finales -->
     <div class="acciones-resultado">
         <a href="{% url 'dashboard' persona.id %}" class="boton-dashboard">
-            📊 Ver Mi Grafico de Avance
+             Ver Mi Grafico de Avance
         </a>
         <a href="{% url 'registrar_persona' %}" class="boton-inicio">
-            🔄 Realizar Otra Evaluación
+             Realizar Otra Evaluación
         </a>
     </div>
 </div>

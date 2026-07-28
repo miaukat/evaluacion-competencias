@@ -24,25 +24,24 @@ def registrar_persona(request):
                 'error': 'Debes seleccionar entre 3 y 5 competencias.'
             })
 
-        # Obtenemos o creamos la persona mediante su Email
+        
         persona, creada = Persona.objects.get_or_create(email=email, defaults={'nombre': nombre})
         
         if not creada:
             persona.nombre = nombre
             persona.save()
 
-        # 1. ELIMINAMOS las competencias que el usuario NO seleccionó en esta ocasión
+        
         persona.competencia_set.exclude(nombre__in=lista_competencias).delete()
 
-        # 2. PROCESAMOS únicamente las competencias seleccionadas (3 a 5)
+        
         for comp_nombre in lista_competencias:
             comp_obj, comp_creada = Competencia.objects.get_or_create(
                 persona=persona,
                 nombre=comp_nombre,
                 defaults={'nivel_inicial': 20, 'nivel_final': 0}
             )
-            # Si la competencia ya existía previamente y ya tenía un puntaje final,
-            # actualizamos su nivel_inicial con el nivel_final anterior (para comparar Antes vs Después)
+           
             if not comp_creada and comp_obj.nivel_final > 0:
                 comp_obj.nivel_inicial = comp_obj.nivel_final
                 comp_obj.save()
@@ -54,7 +53,7 @@ def registrar_persona(request):
 
 def evaluar_caso(request, persona_id):
     persona = get_object_or_404(Persona, id=persona_id)
-    # Aquí ahora solo se obtendrán las competencias que se seleccionaron en el registro (3 a 5)
+
     competencias_persona = persona.competencia_set.all()
 
     if request.method == 'POST':
@@ -91,7 +90,7 @@ def evaluar_caso(request, persona_id):
                     )
                     evaluacion_texto = completion.choices[0].message.content
 
-                    # Extraemos el número del PUNTAJE mediante Expresiones Regulares
+                    
                     coincidencia = re.search(r'PUNTAJE:\s*(\d+)', evaluacion_texto)
                     if coincidencia:
                         puntaje_extraido = int(coincidencia.group(1))
@@ -101,7 +100,7 @@ def evaluar_caso(request, persona_id):
             else:
                 evaluacion_texto = "No se recibió respuesta o falta la API Key."
 
-            # Guardamos de forma permanente la respuesta y el nuevo puntaje obtenido
+            
             comp.ultima_respuesta = respuesta_usuario
             comp.ultimo_feedback = evaluacion_texto
             comp.nivel_final = puntaje_extraido
@@ -120,7 +119,7 @@ def evaluar_caso(request, persona_id):
             'resultados': resultados_evaluacion
         })
 
-    # Petición GET
+   
     items_evaluacion = []
     for comp in competencias_persona:
         caso = CASOS_PRACTICOS.get(comp.nombre, "Describe cómo resolverías un problema práctico en esta área.")
@@ -139,7 +138,7 @@ def dashboard(request, persona_id):
     persona = get_object_or_404(Persona, id=persona_id)
     competencias = persona.competencia_set.all()
 
-    # Cargar datos reales guardados en BD para la gráfica de Chart.js
+
     lista_nombres = [comp.nombre for comp in competencias]
     datos_antes = [comp.nivel_inicial for comp in competencias]
     datos_despues = [comp.nivel_final for comp in competencias]

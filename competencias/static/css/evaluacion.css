@@ -6,7 +6,7 @@ body {
     color: #333;
 }
 
-/* Contenedor principal ajustado para múltiples preguntas */
+
 .contenedor-evaluacion {
     background: #ffffff;
     padding: 35px;
@@ -34,7 +34,6 @@ body {
     font-size: 0.95rem;
 }
 
-/* Tarjeta individual por cada caso */
 .tarjeta-caso {
     background-color: #f8fafc;
     border: 1px solid #e2e8f0;
@@ -49,7 +48,7 @@ body {
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.04);
 }
 
-/* Badge de la competencia elegida */
+
 .badge-competencia {
     background-color: #e3f2fd;
     color: #0d47a1;
@@ -74,7 +73,7 @@ body {
     font-size: 0.95rem;
 }
 
-/* Área de respuesta */
+
 .grupo-campo label {
     display: block;
     margin-bottom: 8px;
@@ -102,7 +101,7 @@ textarea:focus {
     outline: none;
 }
 
-/* Botón final */
+
 .contenedor-boton {
     margin-top: 30px;
 }
