@@ -40,7 +40,7 @@ input[type="email"] {
 
 input[type="text"]:focus,
 input[type="email"]:focus {
-    border-color: #28a745;
+    border-color: #253754;
     outline: none;
 }
 
@@ -83,7 +83,7 @@ input[type="email"]:focus {
 }
 
 .guardar_registro {
-    background-color: #28a745;
+    background-color: #253754;
     color: white;
     border: none;
     padding: 10px 15px;
@@ -97,5 +97,5 @@ input[type="email"]:focus {
 }
 
 .guardar_registro:hover {
-    background-color: #218838;
+    background-color: #1b283d;
 }

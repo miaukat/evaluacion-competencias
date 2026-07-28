@@ -37,7 +37,7 @@ body {
 .tarjeta-caso {
     background-color: #f8fafc;
     border: 1px solid #e2e8f0;
-    border-left: 5px solid #007bff;
+    border-left: 5px solid #253754;
     padding: 20px;
     border-radius: 8px;
     margin-bottom: 25px;
@@ -62,7 +62,7 @@ body {
 
 .tarjeta-caso h3 {
     margin: 0 0 8px 0;
-    color: #007bff;
+    color: #253754;
     font-size: 1.1rem;
 }
 
@@ -96,7 +96,7 @@ textarea {
 }
 
 textarea:focus {
-    border-color: #007bff;
+    border-color: #253754;
     box-shadow: 0 0 0 3px rgba(0, 123, 255, 0.15);
     outline: none;
 }
@@ -107,7 +107,7 @@ textarea:focus {
 }
 
 .boton-enviar {
-    background-color: #007bff;
+    background-color: #253754;
     color: #ffffff;
     border: none;
     padding: 14px 20px;
@@ -120,7 +120,7 @@ textarea:focus {
 }
 
 .boton-enviar:hover {
-    background-color: #0056b3;
+    background-color: #1b283d;
 }
 
 .boton-enviar:active {
